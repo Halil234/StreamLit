@@ -31,19 +31,11 @@ st.pyplot(viz_correlation.figure)
 
 st.write("Here the distribution of the car dataframe:")
 
-fig, ax = plt.subplots()
+fig, axs = plt.subplots(1,2)
 
-a_heights, a_bins = np.histogram(df_car['A'])
-b_heights, b_bins = np.histogram(df_car['B'], bins=a_bins)
+df_car['mpg'].hist(ax=axs[0])
+df_car['cylinders'].hist(ax=axs[1])
 
-width = (a_bins[1] - a_bins[0])/3
-
-ax.bar(a_bins[:-1], a_heights, width=width, facecolor='cornflowerblue')
-ax.bar(b_bins[:-1]+width, b_heights, width=width, facecolor='seagreen')
-
-df_car.hist()
-
-fig, ax = plt.subplots(figsize=(15,3))
 #df_car.plot.hist(bins=50, alpha=0.7,  title="Average Measurements per Tumor Type")
 plt.show()
 st.pyplot(fig)
