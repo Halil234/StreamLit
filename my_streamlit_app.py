@@ -31,10 +31,30 @@ st.pyplot(viz_correlation.figure)
 
 st.write("Here the distribution of the car dataframe:")
 
-fig, axs = plt.subplots(1,2)
+fig, axs = plt.subplots(4,2, figsize=(24, 20))
 
-df_car['mpg'].hist(ax=axs[0])
-df_car['cylinders'].hist(ax=axs[1])
+axe = axs.ravel()
+
+axe[0].set_title('mpg',fontsize=20)
+axe[1].set_title('cylinders',fontsize=20)
+axe[2].set_title('cubicinches',fontsize=20)
+axe[3].set_title('hp',fontsize=20)
+axe[4].set_title('weightlbs',fontsize=20)
+axe[5].set_title('time to 60',fontsize=20)
+axe[6].set_title('year',fontsize=20)
+axe[7].set_title('continent',fontsize=20)
+
+
+
+
+df_car['mpg'].hist(ax=axe[0])
+df_car['cylinders'].hist(ax=axe[1])
+df_car['cubicinches'].hist(ax=axe[2])
+df_car['hp'].hist(ax=axe[3])
+df_car['weightlbs'].hist(ax=axe[4])
+df_car['time-to-60'].hist(ax=axe[5])
+df_car['year'].hist(ax=axe[6])
+df_car['continent'].hist(ax=axe[7])
 
 #df_car.plot.hist(bins=50, alpha=0.7,  title="Average Measurements per Tumor Type")
 plt.show()
