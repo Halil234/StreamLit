@@ -9,12 +9,28 @@ st.title('Hello Wilders, welcome to my Car application!')
 
 
 link = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
-df_car = pd.read_csv(link)
+df_allcar = pd.read_csv(link)
 
+region = st.radio(
+     "Please choose one Region you want to analyse",
+     ('US', 'Europe', 'Japan', 'All'))
+
+if region == 'US':
+    st.write('You selected US.')
+    df_car = df_allcar.loc[df_allcar['continent'] == 'US.']
+elif region == 'Europe':
+    st.write("You selected Europe.")
+    df_car = df_allcar.loc[df_allcar['continent'] == 'Europe.']
+elif region == 'Japan':
+    st.write("You selected Japan.")
+    df_car = df_allcar.loc[df_allcar['continent'] == 'Japan.']
+elif region == 'All':
+    df_car = df_allcar
 
 st.write("Here the pure car data:")
 
-df_car
+# df_car
+df_allcar.loc[df_allcar["continent"] == 'Japan.']
 
 # st.line_chart(df_weather['MAX_TEMPERATURE_C'])
 
